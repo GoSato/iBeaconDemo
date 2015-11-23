@@ -14,6 +14,7 @@
 		C7B838451C009CDB00874A94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B838431C009CDB00874A94 /* LaunchScreen.storyboard */; };
 		C7B838501C009CDB00874A94 /* iBeaconDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8384F1C009CDB00874A94 /* iBeaconDemoTests.swift */; };
 		C7B8385B1C009CDB00874A94 /* iBeaconDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8385A1C009CDB00874A94 /* iBeaconDemoUITests.swift */; };
+		C7B838691C009D2800874A94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B838681C009D2800874A94 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C7B838561C009CDB00874A94 /* iBeaconDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B8385A1C009CDB00874A94 /* iBeaconDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconDemoUITests.swift; sourceTree = "<group>"; };
 		C7B8385C1C009CDB00874A94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7B838681C009D2800874A94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B838691C009D2800874A94 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +80,7 @@
 		C7B8382E1C009CDB00874A94 = {
 			isa = PBXGroup;
 			children = (
+				C7B838681C009D2800874A94 /* CoreLocation.framework */,
 				C7B838391C009CDB00874A94 /* iBeaconDemo */,
 				C7B8384E1C009CDB00874A94 /* iBeaconDemoTests */,
 				C7B838591C009CDB00874A94 /* iBeaconDemoUITests */,
@@ -194,6 +198,11 @@
 					C7B838361C009CDB00874A94 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = YZQ5H72H89;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					C7B8384A1C009CDB00874A94 = {
 						CreatedOnToolsVersion = 7.1.1;
