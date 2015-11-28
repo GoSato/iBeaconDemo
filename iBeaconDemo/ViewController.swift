@@ -24,6 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var distance: UILabel!
     
     
+    
     //UUIDからNSUUIDを作成
     //UUIDは送信機側とフォーマットも合わせる
     let proximityUUID = NSUUID(UUIDString:"B9407F30-F5F8-466E-AFF9-25556B57FE6D")
@@ -87,7 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     manager : The location manager object reporting the event.
     region  : The region that is being monitored.
     */
-    func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!) {
+    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
         manager.requestStateForRegion(region)
         self.status.text = "Scanning..."
     }
@@ -99,7 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     state   :The state of the specified region. For a list of possible values, see the CLRegionState type.
     region  :The region whose state was determined.
     */
-    func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion inRegion: CLRegion!) {
+    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion inRegion: CLRegion) {
         if (state == .Inside) {
             //領域内にはいったときに距離測定を開始
             manager.startRangingBeaconsInRegion(region)
@@ -114,7 +115,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     region  : The region for which the error occurred.
     error   : An error object containing the error code that indicates why region monitoring failed.
     */
-    func locationManager(manager: CLLocationManager!, monitoringDidFailForRegion region: CLRegion!, withError error: NSError!) {
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
         print("monitoringDidFailForRegion \(error)")
         self.status.text = "Error :("
     }
@@ -126,16 +127,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     error   : The error object containing the reason the location or heading could not be retrieved.
     */
     //通信失敗
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("didFailWithError \(error)")
     }
     
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         self.status.text = "Possible Match"
     }
     
-    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
         reset()
     }
@@ -151,12 +152,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
      /****** swift2.0で動くように変更 ******/
     /*****  NSArray => [CLBeacon] *****/
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         print(beacons)
         
         if(beacons.count == 0) { return }
         //複数あった場合は一番先頭のものを処理する
-        var beacon = beacons[0] as! CLBeacon
+        let beacon = beacons[0] 
         
         /*
         beaconから取得できるデータ
